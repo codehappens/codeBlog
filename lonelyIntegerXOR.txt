@@ -1,0 +1,29 @@
+Lonely Integer hackerrank problem: 
+
+https://www.hackerrank.com/challenges/ctci-lonely-integer/problem
+
+The problem was to find the lonely Integer in a list where the other
+ integers were in sets of two. Ie find 95 from the array of
+ 4 9 95 93 57 4 57 93 9
+I summed up the array by ‘xor’ ing them together because two numbers
+ with the same values will cancel each other out… for example
+
+1 in binary xor-d with itself…
+0001 or 0001 = 0000
+3 in binary xor-d with itself…
+0011 or 0011 = 0000
+8 in binary or-d with itself…
+1000 or 1000 = 0000
+but if there’s an ‘odd number out’ xor-d in, it will show up
+4 or’d with nothing = 0100 xor 0000 =0100
+
+===============
+
+# Complete the findLonely function below.
+
+def findLonely(arr):
+    s=0
+    for i in range(len(arr)):
+        s=s^arr[i] #xor each element together.
+    return s
+        
