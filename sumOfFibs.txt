@@ -1,0 +1,29 @@
+This problem claims to be easy, but I can't make it fast enough! I
+used binet formula and even used logs to keep the exponents from being
+crazy. I'm at a loss...easy? If it were easy wouldn't doing it the naive
+way and just doing it with brute force work? Easy usually means brute
+force will work not conjer up every math class you can think of and go
+insane trying to figure out how to manipulate it...grrr!
+
+The question is to add fibonacci sequences that can start with any two
+seeds.
+So, fib(n-1)*a+fib(n)*b is what I was thinking, I used the Binet formula
+to find f(n) and f(n-1) and instead of raising to n where necessary I did
+the fast use logs instead and even that timed out. I don't want to give up
+but I am not sure what to do to make it faster. Should I just give in and
+check the solution or try some more things?
+
+#https://www.hackerrank.com/challenges/fibonacci-finding-easy/problem
+
+
+def solve(a, b, n):
+    s5=2.236 # square root of 5 rouded
+    a=a%1000000007
+    b=b%1000000007
+    n=n%1000000007
+    #powertoN=math.exp(n*math.log(x))
+    fnminus1=int(round((math.exp((n-1)*math.log(1.618))+(math.exp((n-1)*math.log(0.618)-math.log(10))))/s5))%1000000007
+    #fn=int(round(((1.618)**n-(-0.618)**n)/s5))%1000000007
+    fn=int(round((math.exp(n*math.log(1.618))+(math.exp(n*math.log(0.618)-math.log(10))))/s5))%1000000007
+    ans=(fnminus1*a)%1000000007+(fn*b)%1000000007
+    return ans%1000000007
